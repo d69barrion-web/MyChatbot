@@ -60,21 +60,34 @@
 
         function sendMessage() {
 
-            let input = document.getElementById("message");
-            let text = input.value;
+    let input = document.getElementById("message");
+    let text = input.value;
 
-            if (text === "") return;
+    if (text === "") return;
 
-            // Ipakita ang message ng user
-            addMessage("You", text, "user");
+    addMessage("You", text, "user");
 
-            // Fake bot response
-            addMessage("Bot", "Hello! 👋", "bot");
+    let message = text.toLowerCase();
 
-            // Linisin ang input
-            input.value = "";
-        }
+    let response;
 
+    if (message === "hello") {
+        response = "Hello! 👋";
+    }
+    else if (message === "sino ka?") {
+        response = "Ako ang MyChatbot. 🤖";
+    }
+    else if (message === "bye") {
+        response = "Goodbye! 👋";
+    }
+    else {
+        response = "Hmm... hindi ko pa alam ang sagot diyan. 😅";
+    }
+
+    addMessage("Bot", response, "bot");
+
+    input.value = "";
+}
 
         function addMessage(sender, text, className) {
 
