@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Chatbot</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+
+        #chat {
+            border: 1px solid #ccc;
+            height: 400px;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin: 10px 0;
+        }
+
+        .user {
+            text-align: right;
+        }
+
+        .bot {
+            text-align: left;
+        }
+
+        #inputArea {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        #message {
+            flex: 1;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Chatbot 🤖</h2>
+
+    <div id="chat"></div>
+
+    <div id="inputArea">
+        <input id="message" placeholder="Type a message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+
+        function sendMessage() {
+
+            let input = document.getElementById("message");
+            let text = input.value;
+
+            if (text === "") return;
+
+            // Ipakita ang message ng user
+            addMessage("You", text, "user");
+
+            // Fake bot response
+            addMessage("Bot", "Hello! 👋", "bot");
+
+            // Linisin ang input
+            input.value = "";
+        }
+
+
+        function addMessage(sender, text, className) {
+
+            let chat = document.getElementById("chat");
+
+            chat.innerHTML += `
+                <div class="message ${className}">
+                    <strong>${sender}:</strong> ${text}
+                </div>
+            `;
+
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+    </script>
+
+</body>
+</html>
